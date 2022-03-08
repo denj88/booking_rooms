@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "category".
@@ -42,7 +43,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Название категории',
+            'name' => 'Категория',
             'rooms_count' => 'Кол-во комнат',
         ];
     }
@@ -65,4 +66,9 @@ class Category extends \yii\db\ActiveRecord
     {
         return new \app\models\query\CategoryQuery(get_called_class());
     }
+
+	public static function getCategoryNames()
+	{
+		return ArrayHelper::map(static::find()->all(), 'id', 'name');
+	}
 }

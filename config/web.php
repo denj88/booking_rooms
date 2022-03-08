@@ -5,6 +5,8 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+	'language' => 'ru-RU',
+	'name' => 'Бронирование номеров',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -47,6 +49,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+	            '/' => '/room/index',
+	            '/booking-room/create/<roomId:\d+>' => '/booking-room/create',
             ],
         ],
     ],
